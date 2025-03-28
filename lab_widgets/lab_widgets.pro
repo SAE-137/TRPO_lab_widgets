@@ -10,10 +10,16 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    widget.cpp
+    squaring.cpp \
+    strvalidator.cpp \
+    widget.cpp \
+    win.cpp
 
 HEADERS += \
-    widget.h
+    squaring.h \
+    strvalidator.h \
+    widget.h \
+    win.h
 
 FORMS += \
     widget.ui
