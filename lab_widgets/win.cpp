@@ -5,7 +5,9 @@
 
 Win::Win(QWidget* parent) : QWidget(parent)
 {
-    QTextCodec::setCodecForLocale(QTextCodec::codecForName("Windows-1251"));
+    codec = QTextCodec::codecForName("Windows-1251"); // не работает
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
+
     setWindowTitle(codec->toUnicode("Возведение в квадрат"));
     frame = new QFrame(this);
     frame->setFrameShadow(QFrame::Raised);
