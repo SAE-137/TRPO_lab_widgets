@@ -349,3 +349,5 @@ healthchecksdb
 MigrationBackup/
 
 build-counter-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/
+
+build-rotation-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/
