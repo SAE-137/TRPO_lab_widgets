@@ -347,3 +347,5 @@ healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
+
+build-counter-Desktop_Qt_5_15_2_MinGW_64_bit-Debug/
