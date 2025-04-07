@@ -1,34 +1,52 @@
 #ifndef WIN_H
 #define WIN_H
 
-#include<QWidget>
-#include <QtGui>
-#include<QFrame>
-#include<QLabel>
-#include<QLineEdit>
-#include<QPushButton>
+#include <QWidget>
+#include <QFrame>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include <QValidator>
 
 class Win : public QWidget
 {
-
     Q_OBJECT
-protected:
-    QTextCodec* codec;
-    QFrame* frame;
-    QLabel* inputLabel;
-    QLineEdit *inputEdit;
-    QLabel *outputLabel;
-    QLineEdit *outputEdit;
-    QPushButton *nextButton;
-    QPushButton *exitButton;
 
 public:
-    Win(QWidget* parent = nullptr);
+
+    Win(QWidget *parent = nullptr);
 
 public slots:
+
     void begin();
     void calc();
 
+protected:
+
+    QLabel *inputLabel = nullptr;
+    QLineEdit *inputEdit = nullptr;
+    QFrame *frame = nullptr;
+    QLabel *outputLabel = nullptr;
+    QLineEdit *outputEdit = nullptr;
+    QPushButton *nextButton = nullptr;
+    QPushButton *exitButton = nullptr;
 };
 
-#endif // WIN_H
+
+
+class StrValidator: public QValidator
+{
+public:
+    StrValidator(QObject *parent = nullptr)
+        :QValidator(parent)
+    {
+
+    }
+
+    virtual State validate(QString &str, int& pos) const
+    {
+        return Acceptable;
+    }
+};
+
+#endif //WIN_N
