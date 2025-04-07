@@ -1,25 +1,25 @@
-QT += core gui
+QT       += core gui
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 
-# Добавьте эти строки для корректной работы с кириллицей
-CONFIG += utf8_source
-QMAKE_CXXFLAGS += -finput-charset=UTF-8 -fexec-charset=UTF-8
-DEFINES += QT_NO_CAST_FROM_ASCII QT_NO_CAST_TO_ASCII
+# You can make your code fail to compile if it uses deprecated APIs.
+# In order to do so, uncomment the following line.
+#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    counter.cpp \
     main.cpp \
-    squaring.cpp \
-    strvalidator.cpp \
-    widget.cpp \
     win.cpp
 
 HEADERS += \
-    squaring.h \
-    strvalidator.h \
-    widget.h \
+    counter.h \
     win.h
 
-FORMS += \
-    widget.ui
+FORMS +=
+
+# Default rules for deployment.
+qnx: target.path = /tmp/$${TARGET}/bin
+else: unix:!android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target
