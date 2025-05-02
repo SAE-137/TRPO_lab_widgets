@@ -13,7 +13,7 @@ public:
     virtual ~Figura() = default;
     void move(float alpha, QPainter *painter);
 protected:
-    int _x, _y, _halflen, _dx, _dy, _r;
+    int _x, _y, _halflen, _dx, _dy;
     virtual void _draw(QPainter *painter) = 0;
 };
 

@@ -7,14 +7,14 @@ Area::Area(QWidget *parent)
     : QWidget{parent}
 {
     setFixedSize(QSize (300, 200));
-    myLine = new MyLine(80, 100, 50);
+    myLine = new MyLine(80, 10, 50);
     myRect = new MyRect(220, 100, 50);
     m_alpha = 0;
 }
 
 void Area::showEvent(QShowEvent *)
 {
-    m_myTimer = startTimer(50);
+    m_myTimer = startTimer(10);
 }
 
 void Area::paintEvent(QPaintEvent *)
