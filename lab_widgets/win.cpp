@@ -1,6 +1,7 @@
 #include <QLayout>
 #include <QtMath>
 #include <QMessageBox>
+#include<QDebug>
 
 #include "Win.h"
 
@@ -59,8 +60,7 @@ void Win::calc()
 {
     const QString errorTitle = tr("Ошибка");
     const QString inputErrorMsg = tr("Введено неверное значение.");
-    const QString overflowPreventionMsg = tr("Результат слишком велик и может привести к переполнению.");
-    const QString overflowMsg = tr("Произошло переполнение при вычислении.");
+    const QString overflowPreventionMsg = tr("Введено слишком большое число, произошло переполнение");
 
     bool conversionOk = false;
     const QString inputStr = inputEdit->text().trimmed();
@@ -69,32 +69,30 @@ void Win::calc()
         return;
     }
 
-    const double inputValue = inputStr.toDouble(&conversionOk);
 
+    const double inputValue = inputStr.toDouble(&conversionOk);
     if (!conversionOk) {
         QMessageBox::warning(this, errorTitle, inputErrorMsg);
         return;
     }
 
 
-    const double maxValueBeforeOverflow = qSqrt(std::numeric_limits<double>::max());
-    if (qAbs(inputValue) > maxValueBeforeOverflow) {
+    const double maxInputValue = 1.0e150;
+    if (qAbs(inputValue) > maxInputValue) {
         QMessageBox::warning(this, errorTitle, overflowPreventionMsg);
         return;
     }
 
-    const double result = inputValue * inputValue;
+
+    double result;
+
+        result = inputValue * inputValue;
 
 
-    if (qIsInf(result) || qIsNaN(result)) {
-        QMessageBox::warning(this, errorTitle, overflowMsg);
-        return;
-    }
 
 
+    // Вывод результата
     outputEdit->setText(QString::number(result, 'g', 10));
-
-
     inputEdit->setEnabled(false);
     outputLabel->setVisible(true);
     outputEdit->setVisible(true);
